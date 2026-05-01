@@ -1,0 +1,202 @@
+openapi: 3.1.0
+info:
+  title: Free Cocktail API
+  description: >-
+    TheCocktailDB Free API provides access to a vast database of cocktail
+    recipes, ingredients, glassware, and images. Search by name, ingredient,
+    category, glass, or alcohol content, look up details by ID, list available
+    filters, or fetch a random cocktail.
+  version: '1.0'
+  contact:
+    name: TheCocktailDB
+    url: https://www.thecocktaildb.com/api.php
+servers:
+  - url: https://www.thecocktaildb.com/api/json/v1/{apiKey}
+    description: TheCocktailDB JSON API. Use API key "1" for development.
+    variables:
+      apiKey:
+        default: '1'
+        description: API key. "1" is the free test key; premium keys unlock additional endpoints.
+tags:
+  - name: Search
+    description: Search cocktails and ingredients.
+  - name: Lookup
+    description: Look up full details by ID.
+  - name: Random
+    description: Fetch random cocktails.
+  - name: Filter
+    description: Filter cocktails by ingredient, alcohol, category, or glass.
+  - name: List
+    description: List available categories, glasses, ingredients, and alcohol filters.
+paths:
+  /search.php:
+    get:
+      summary: Search cocktails or ingredients
+      description: Search cocktails by name, list cocktails by first letter, or search ingredients by name.
+      operationId: searchCocktails
+      tags:
+        - Search
+      parameters:
+        - name: s
+          in: query
+          description: Cocktail name to search for.
+          schema:
+            type: string
+        - name: f
+          in: query
+          description: First letter to list cocktails by.
+          schema:
+            type: string
+            maxLength: 1
+        - name: i
+          in: query
+          description: Ingredient name to search for.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrinkList'
+  /lookup.php:
+    get:
+      summary: Lookup cocktail or ingredient by ID
+      description: Get full cocktail details by ID, or ingredient information by ID.
+      operationId: lookupById
+      tags:
+        - Lookup
+      parameters:
+        - name: i
+          in: query
+          description: Cocktail ID.
+          schema:
+            type: string
+        - name: iid
+          in: query
+          description: Ingredient ID.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lookup result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrinkList'
+  /random.php:
+    get:
+      summary: Get a random cocktail
+      operationId: randomCocktail
+      tags:
+        - Random
+      responses:
+        '200':
+          description: Random cocktail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrinkList'
+  /filter.php:
+    get:
+      summary: Filter cocktails
+      description: Filter cocktails by ingredient, alcoholic/non-alcoholic, category, or glass type.
+      operationId: filterCocktails
+      tags:
+        - Filter
+      parameters:
+        - name: i
+          in: query
+          description: Ingredient to filter by.
+          schema:
+            type: string
+        - name: a
+          in: query
+          description: Alcoholic or Non_Alcoholic.
+          schema:
+            type: string
+            enum: [Alcoholic, Non_Alcoholic]
+        - name: c
+          in: query
+          description: Category to filter by.
+          schema:
+            type: string
+        - name: g
+          in: query
+          description: Glass type to filter by.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Filtered cocktails.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrinkList'
+  /list.php:
+    get:
+      summary: List filter values
+      description: List available categories, glasses, ingredients, or alcoholic filters.
+      operationId: listFilters
+      tags:
+        - List
+      parameters:
+        - name: c
+          in: query
+          schema:
+            type: string
+            enum: [list]
+          description: List categories.
+        - name: g
+          in: query
+          schema:
+            type: string
+            enum: [list]
+          description: List glasses.
+        - name: i
+          in: query
+          schema:
+            type: string
+            enum: [list]
+          description: List ingredients.
+        - name: a
+          in: query
+          schema:
+            type: string
+            enum: [list]
+          description: List alcoholic filters.
+      responses:
+        '200':
+          description: List of filter values.
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Drink:
+      type: object
+      properties:
+        idDrink:
+          type: string
+        strDrink:
+          type: string
+        strCategory:
+          type: string
+        strAlcoholic:
+          type: string
+        strGlass:
+          type: string
+        strInstructions:
+          type: string
+        strDrinkThumb:
+          type: string
+          format: uri
+    DrinkList:
+      type: object
+      properties:
+        drinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Drink'
