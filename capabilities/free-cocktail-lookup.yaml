@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Cocktail API — Lookup
+  description: 'Free Cocktail API — Lookup. 1 operations. Lead operation: Lookup cocktail or ingredient by ID. Self-contained
+    Naftiko capability covering one Free Cocktail Api business surface.'
+  tags:
+  - Free Cocktail Api
+  - Lookup
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREE_COCKTAIL_API_API_KEY: FREE_COCKTAIL_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: free-cocktail-lookup
+    baseUri: https://www.thecocktaildb.com/api/json/v1/{apiKey}
+    description: Free Cocktail API — Lookup business capability. Self-contained, no shared references.
+    resources:
+    - name: lookup.php
+      path: /lookup.php
+      operations:
+      - name: lookupbyid
+        method: GET
+        description: Lookup cocktail or ingredient by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: i
+          in: query
+          type: string
+          description: Cocktail ID.
+        - name: iid
+          in: query
+          type: string
+          description: Ingredient ID.
+  exposes:
+  - type: rest
+    namespace: free-cocktail-lookup-rest
+    port: 8080
+    description: REST adapter for Free Cocktail API — Lookup. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/lookup-php
+      name: lookup-php
+      description: REST surface for lookup.php.
+      operations:
+      - method: GET
+        name: lookupbyid
+        description: Lookup cocktail or ingredient by ID
+        call: free-cocktail-lookup.lookupbyid
+        with:
+          i: rest.i
+          iid: rest.iid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: free-cocktail-lookup-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Free Cocktail API — Lookup. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: lookup-cocktail-ingredient-id
+      description: Lookup cocktail or ingredient by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-cocktail-lookup.lookupbyid
+      with:
+        i: tools.i
+        iid: tools.iid
+      outputParameters:
+      - type: object
+        mapping: $.

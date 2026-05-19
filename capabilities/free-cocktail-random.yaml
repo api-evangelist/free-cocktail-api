@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Cocktail API — Random
+  description: 'Free Cocktail API — Random. 1 operations. Lead operation: Get a random cocktail. Self-contained Naftiko capability
+    covering one Free Cocktail Api business surface.'
+  tags:
+  - Free Cocktail Api
+  - Random
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREE_COCKTAIL_API_API_KEY: FREE_COCKTAIL_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: free-cocktail-random
+    baseUri: https://www.thecocktaildb.com/api/json/v1/{apiKey}
+    description: Free Cocktail API — Random business capability. Self-contained, no shared references.
+    resources:
+    - name: random.php
+      path: /random.php
+      operations:
+      - name: randomcocktail
+        method: GET
+        description: Get a random cocktail
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: free-cocktail-random-rest
+    port: 8080
+    description: REST adapter for Free Cocktail API — Random. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/random-php
+      name: random-php
+      description: REST surface for random.php.
+      operations:
+      - method: GET
+        name: randomcocktail
+        description: Get a random cocktail
+        call: free-cocktail-random.randomcocktail
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: free-cocktail-random-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Free Cocktail API — Random. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-random-cocktail
+      description: Get a random cocktail
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-cocktail-random.randomcocktail
+      outputParameters:
+      - type: object
+        mapping: $.

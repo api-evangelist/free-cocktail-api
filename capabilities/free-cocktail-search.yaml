@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Cocktail API — Search
+  description: 'Free Cocktail API — Search. 1 operations. Lead operation: Search cocktails or ingredients. Self-contained
+    Naftiko capability covering one Free Cocktail Api business surface.'
+  tags:
+  - Free Cocktail Api
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREE_COCKTAIL_API_API_KEY: FREE_COCKTAIL_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: free-cocktail-search
+    baseUri: https://www.thecocktaildb.com/api/json/v1/{apiKey}
+    description: Free Cocktail API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: search.php
+      path: /search.php
+      operations:
+      - name: searchcocktails
+        method: GET
+        description: Search cocktails or ingredients
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: s
+          in: query
+          type: string
+          description: Cocktail name to search for.
+        - name: f
+          in: query
+          type: string
+          description: First letter to list cocktails by.
+        - name: i
+          in: query
+          type: string
+          description: Ingredient name to search for.
+  exposes:
+  - type: rest
+    namespace: free-cocktail-search-rest
+    port: 8080
+    description: REST adapter for Free Cocktail API — Search. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/search-php
+      name: search-php
+      description: REST surface for search.php.
+      operations:
+      - method: GET
+        name: searchcocktails
+        description: Search cocktails or ingredients
+        call: free-cocktail-search.searchcocktails
+        with:
+          s: rest.s
+          f: rest.f
+          i: rest.i
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: free-cocktail-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Free Cocktail API — Search. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: search-cocktails-ingredients
+      description: Search cocktails or ingredients
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-cocktail-search.searchcocktails
+      with:
+        s: tools.s
+        f: tools.f
+        i: tools.i
+      outputParameters:
+      - type: object
+        mapping: $.

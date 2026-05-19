@@ -1,0 +1,94 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Free Cocktail API — List
+  description: 'Free Cocktail API — List. 1 operations. Lead operation: List filter values. Self-contained Naftiko capability
+    covering one Free Cocktail Api business surface.'
+  tags:
+  - Free Cocktail Api
+  - List
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREE_COCKTAIL_API_API_KEY: FREE_COCKTAIL_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: free-cocktail-list
+    baseUri: https://www.thecocktaildb.com/api/json/v1/{apiKey}
+    description: Free Cocktail API — List business capability. Self-contained, no shared references.
+    resources:
+    - name: list.php
+      path: /list.php
+      operations:
+      - name: listfilters
+        method: GET
+        description: List filter values
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: c
+          in: query
+          type: string
+          description: List categories.
+        - name: g
+          in: query
+          type: string
+          description: List glasses.
+        - name: i
+          in: query
+          type: string
+          description: List ingredients.
+        - name: a
+          in: query
+          type: string
+          description: List alcoholic filters.
+  exposes:
+  - type: rest
+    namespace: free-cocktail-list-rest
+    port: 8080
+    description: REST adapter for Free Cocktail API — List. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/list-php
+      name: list-php
+      description: REST surface for list.php.
+      operations:
+      - method: GET
+        name: listfilters
+        description: List filter values
+        call: free-cocktail-list.listfilters
+        with:
+          c: rest.c
+          g: rest.g
+          i: rest.i
+          a: rest.a
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: free-cocktail-list-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Free Cocktail API — List. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-filter-values
+      description: List filter values
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: free-cocktail-list.listfilters
+      with:
+        c: tools.c
+        g: tools.g
+        i: tools.i
+        a: tools.a
+      outputParameters:
+      - type: object
+        mapping: $.
