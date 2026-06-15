@@ -1,0 +1,640 @@
+{
+  "item": [
+    {
+      "id": "f6f6980e-5daa-4f64-b5ab-04d046caa861",
+      "name": "Search",
+      "description": {
+        "content": "Search cocktails and ingredients.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ad3a802-d891-4c9c-8bcc-572bc6e3c511",
+          "name": "Search cocktails or ingredients",
+          "request": {
+            "name": "Search cocktails or ingredients",
+            "description": {
+              "content": "Search cocktails by name, list cocktails by first letter, or search ingredients by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "s",
+                  "value": "<string>",
+                  "description": "Cocktail name to search for."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "First letter to list cocktails by."
+                },
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "Ingredient name to search for."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                  "type": "any",
+                  "value": "{{apiKey}}",
+                  "key": "apiKey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de0ea9e6-46f3-4182-9fe4-653bc3a2522c",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "i",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                      "type": "any",
+                      "value": "{{apiKey}}",
+                      "key": "apiKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"drinks\": [\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://KMLQaBE.yzHeBAPTYGA9I1t4C2Sm7gOYp+n\"\n    },\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://CfgafWaW.qapsiunb1Kn\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9ed4bb41-99d7-42d9-9f46-cd3085d1b1cb",
+      "name": "Lookup",
+      "description": {
+        "content": "Look up full details by ID.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34f5dcde-a8b2-4a83-b95e-b7d8652a5bdb",
+          "name": "Lookup cocktail or ingredient by ID",
+          "request": {
+            "name": "Lookup cocktail or ingredient by ID",
+            "description": {
+              "content": "Get full cocktail details by ID, or ingredient information by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lookup.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "Cocktail ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "iid",
+                  "value": "<string>",
+                  "description": "Ingredient ID."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                  "type": "any",
+                  "value": "{{apiKey}}",
+                  "key": "apiKey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2dea296-e051-44e2-9746-499fa985594c",
+              "name": "Lookup result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lookup.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                      "type": "any",
+                      "value": "{{apiKey}}",
+                      "key": "apiKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"drinks\": [\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://KMLQaBE.yzHeBAPTYGA9I1t4C2Sm7gOYp+n\"\n    },\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://CfgafWaW.qapsiunb1Kn\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "19f613aa-6d9a-4a02-8adb-5b94d6005485",
+      "name": "Random",
+      "description": {
+        "content": "Fetch random cocktails.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7192069-b917-41eb-8269-dfbd623991fd",
+          "name": "Get a random cocktail",
+          "request": {
+            "name": "Get a random cocktail",
+            "description": {},
+            "url": {
+              "path": [
+                "random.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                  "type": "any",
+                  "value": "{{apiKey}}",
+                  "key": "apiKey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2fcd4b8f-3a4f-445b-a2d6-c7918058a29c",
+              "name": "Random cocktail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "random.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                      "type": "any",
+                      "value": "{{apiKey}}",
+                      "key": "apiKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"drinks\": [\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://KMLQaBE.yzHeBAPTYGA9I1t4C2Sm7gOYp+n\"\n    },\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://CfgafWaW.qapsiunb1Kn\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f6e2c754-dfe1-4631-adec-70fa579580a6",
+      "name": "Filter",
+      "description": {
+        "content": "Filter cocktails by ingredient, alcohol, category, or glass.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c5f0f47-c749-4249-aefc-ccb6fb42b096",
+          "name": "Filter cocktails",
+          "request": {
+            "name": "Filter cocktails",
+            "description": {
+              "content": "Filter cocktails by ingredient, alcoholic/non-alcoholic, category, or glass type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filter.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "Ingredient to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "a",
+                  "value": "<string>",
+                  "description": "Alcoholic or Non_Alcoholic."
+                },
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<string>",
+                  "description": "Category to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "g",
+                  "value": "<string>",
+                  "description": "Glass type to filter by."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                  "type": "any",
+                  "value": "{{apiKey}}",
+                  "key": "apiKey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4754dee-ca6c-4cbf-8637-6960df7ef4d2",
+              "name": "Filtered cocktails.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filter.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "a",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "g",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                      "type": "any",
+                      "value": "{{apiKey}}",
+                      "key": "apiKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"drinks\": [\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://KMLQaBE.yzHeBAPTYGA9I1t4C2Sm7gOYp+n\"\n    },\n    {\n      \"idDrink\": \"string\",\n      \"strDrink\": \"string\",\n      \"strCategory\": \"string\",\n      \"strAlcoholic\": \"string\",\n      \"strGlass\": \"string\",\n      \"strInstructions\": \"string\",\n      \"strDrinkThumb\": \"https://CfgafWaW.qapsiunb1Kn\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9464226c-e51a-4b7a-8ba6-2006c62a9ebe",
+      "name": "List",
+      "description": {
+        "content": "List available categories, glasses, ingredients, and alcohol filters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "115277fd-1e39-4316-aab7-04947ead1a80",
+          "name": "List filter values",
+          "request": {
+            "name": "List filter values",
+            "description": {
+              "content": "List available categories, glasses, ingredients, or alcoholic filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<string>",
+                  "description": "List categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "g",
+                  "value": "<string>",
+                  "description": "List glasses."
+                },
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "List ingredients."
+                },
+                {
+                  "disabled": false,
+                  "key": "a",
+                  "value": "<string>",
+                  "description": "List alcoholic filters."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                  "type": "any",
+                  "value": "{{apiKey}}",
+                  "key": "apiKey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45a94f19-c83e-445b-bb1e-529cb5d0a126",
+              "name": "List of filter values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "g",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "a",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                      "type": "any",
+                      "value": "{{apiKey}}",
+                      "key": "apiKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "1",
+      "key": "apiKey"
+    },
+    {
+      "type": "string",
+      "value": "https://www.thecocktaildb.com/api/json/v1/{{apiKey}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9e50f397-aba1-49ad-a482-59a0fe36d18f",
+    "name": "Free Cocktail API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TheCocktailDB Free API provides access to a vast database of cocktail recipes, ingredients, glassware, and images. Search by name, ingredient, category, glass, or alcohol content, look up details by ID, list available filters, or fetch a random cocktail.\n\nContact Support:\n Name: TheCocktailDB",
+      "type": "text/plain"
+    }
+  }
+}
