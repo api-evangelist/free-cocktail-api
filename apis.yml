@@ -36,6 +36,8 @@ apis:
         type: OpenAPI
     description: The Free Cocktail API provides access to a vast database of cocktail recipes, ingredients, and images.
 common:
+  - type: DomainSecurity
+    url: security/free-cocktail-api-domain-security.yml
   - type: Website
     url: https://www.thecocktaildb.com/
   - type: Documentation
