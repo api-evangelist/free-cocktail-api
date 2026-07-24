@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: Free Cocktail Filter List API
+  description: TheCocktailDB Free API provides access to a vast database of cocktail recipes, ingredients, glassware, and images. Search by name, ingredient, category, glass, or alcohol content, look up details by ID, list available filters, or fetch a random cocktail.
+  version: '1.0'
+  contact:
+    name: TheCocktailDB
+    url: https://www.thecocktaildb.com/api.php
+servers:
+- url: https://www.thecocktaildb.com/api/json/v1/{apiKey}
+  description: TheCocktailDB JSON API. Use API key "1" for development.
+  variables:
+    apiKey:
+      default: '1'
+      description: API key. "1" is the free test key; premium keys unlock additional endpoints.
+tags:
+- name: List
+  description: List available categories, glasses, ingredients, and alcohol filters.
+paths:
+  /list.php:
+    get:
+      summary: List filter values
+      description: List available categories, glasses, ingredients, or alcoholic filters.
+      operationId: listFilters
+      tags:
+      - List
+      parameters:
+      - name: c
+        in: query
+        schema:
+          type: string
+          enum:
+          - list
+        description: List categories.
+      - name: g
+        in: query
+        schema:
+          type: string
+          enum:
+          - list
+        description: List glasses.
+      - name: i
+        in: query
+        schema:
+          type: string
+          enum:
+          - list
+        description: List ingredients.
+      - name: a
+        in: query
+        schema:
+          type: string
+          enum:
+          - list
+        description: List alcoholic filters.
+      responses:
+        '200':
+          description: List of filter values.
+          content:
+            application/json:
+              schema:
+                type: object

@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Free Cocktail Filter Random API
+  description: TheCocktailDB Free API provides access to a vast database of cocktail recipes, ingredients, glassware, and images. Search by name, ingredient, category, glass, or alcohol content, look up details by ID, list available filters, or fetch a random cocktail.
+  version: '1.0'
+  contact:
+    name: TheCocktailDB
+    url: https://www.thecocktaildb.com/api.php
+servers:
+- url: https://www.thecocktaildb.com/api/json/v1/{apiKey}
+  description: TheCocktailDB JSON API. Use API key "1" for development.
+  variables:
+    apiKey:
+      default: '1'
+      description: API key. "1" is the free test key; premium keys unlock additional endpoints.
+tags:
+- name: Random
+  description: Fetch random cocktails.
+paths:
+  /random.php:
+    get:
+      summary: Get a random cocktail
+      operationId: randomCocktail
+      tags:
+      - Random
+      responses:
+        '200':
+          description: Random cocktail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrinkList'
+components:
+  schemas:
+    Drink:
+      type: object
+      properties:
+        idDrink:
+          type: string
+        strDrink:
+          type: string
+        strCategory:
+          type: string
+        strAlcoholic:
+          type: string
+        strGlass:
+          type: string
+        strInstructions:
+          type: string
+        strDrinkThumb:
+          type: string
+          format: uri
+    DrinkList:
+      type: object
+      properties:
+        drinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Drink'
