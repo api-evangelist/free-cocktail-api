@@ -4,7 +4,19 @@ description: >-
   The Free Cocktail API is a resource that provides access to a vast database of cocktail recipes, ingredients, and
   images.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/free-cocktail-api.png
 access: 3rd-Party
 created: '2025-01-07'
 modified: '2026-05-19'
@@ -18,23 +30,66 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/free-cocktail-api/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: free-cocktail-api:free-cocktail-api
-    name: Free Cocktail API
-    tags:
-      - Beverages
-      - Cocktails
-      - Drinks
-      - Ingredients
-      - Recipes
-    humanURL: https://www.thecocktaildb.com/api.php
-    baseURL: https://www.thecocktaildb.com/api/json/v1
-    properties:
-      - url: https://www.thecocktaildb.com/api.php
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/free-cocktail-api/refs/heads/main/openapi/free-cocktail-api-openapi.yml
-        type: OpenAPI
-    description: The Free Cocktail API provides access to a vast database of cocktail recipes, ingredients, and images.
+- aid: free-cocktail-api:free-cocktail-api-filter-api
+  name: Free Cocktail API Filter API
+  description: Filter cocktails by ingredient, alcohol, category, or glass.
+  humanURL: https://www.thecocktaildb.com/api.php
+  baseURL: https://www.thecocktaildb.com/api/json/v1
+  tags:
+  - Filter
+  properties:
+  - type: OpenAPI
+    url: openapi/free-cocktail-api-filter-api-openapi.yml
+  - type: Documentation
+    url: https://www.thecocktaildb.com/api.php
+- aid: free-cocktail-api:free-cocktail-api-list-api
+  name: Free Cocktail API List API
+  description: List available categories, glasses, ingredients, and alcohol filters.
+  humanURL: https://www.thecocktaildb.com/api.php
+  baseURL: https://www.thecocktaildb.com/api/json/v1
+  tags:
+  - List
+  properties:
+  - type: OpenAPI
+    url: openapi/free-cocktail-api-list-api-openapi.yml
+  - type: Documentation
+    url: https://www.thecocktaildb.com/api.php
+- aid: free-cocktail-api:free-cocktail-api-lookup-api
+  name: Free Cocktail API Lookup API
+  description: Look up full details by ID.
+  humanURL: https://www.thecocktaildb.com/api.php
+  baseURL: https://www.thecocktaildb.com/api/json/v1
+  tags:
+  - Lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/free-cocktail-api-lookup-api-openapi.yml
+  - type: Documentation
+    url: https://www.thecocktaildb.com/api.php
+- aid: free-cocktail-api:free-cocktail-api-random-api
+  name: Free Cocktail API Random API
+  description: Fetch random cocktails.
+  humanURL: https://www.thecocktaildb.com/api.php
+  baseURL: https://www.thecocktaildb.com/api/json/v1
+  tags:
+  - Random
+  properties:
+  - type: OpenAPI
+    url: openapi/free-cocktail-api-random-api-openapi.yml
+  - type: Documentation
+    url: https://www.thecocktaildb.com/api.php
+- aid: free-cocktail-api:free-cocktail-api-search-api
+  name: Free Cocktail API Search API
+  description: Search cocktails and ingredients.
+  humanURL: https://www.thecocktaildb.com/api.php
+  baseURL: https://www.thecocktaildb.com/api/json/v1
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/free-cocktail-api-search-api-openapi.yml
+  - type: Documentation
+    url: https://www.thecocktaildb.com/api.php
 common:
   - type: AgenticAccess
     url: agentic-access/free-cocktail-api-agentic-access.yml
