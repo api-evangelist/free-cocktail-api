@@ -1,0 +1,22 @@
+{
+  "provider": "free-cocktail-api",
+  "sources": [
+    "free-cocktail-api-filter-api-openapi.yml",
+    "free-cocktail-api-list-api-openapi.yml",
+    "free-cocktail-api-lookup-api-openapi.yml",
+    "free-cocktail-api-random-api-openapi.yml",
+    "free-cocktail-api-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "free-cocktail-api-filter-api-openapi.yml",
+    "free-cocktail-api-list-api-openapi.yml",
+    "free-cocktail-api-lookup-api-openapi.yml",
+    "free-cocktail-api-random-api-openapi.yml",
+    "free-cocktail-api-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
