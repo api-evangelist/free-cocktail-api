@@ -28,7 +28,7 @@ tags:
   - Ingredients
   - Recipes
 url: https://raw.githubusercontent.com/api-evangelist/free-cocktail-api/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: free-cocktail-api:free-cocktail-api-filter-api
   name: Free Cocktail API Filter API
