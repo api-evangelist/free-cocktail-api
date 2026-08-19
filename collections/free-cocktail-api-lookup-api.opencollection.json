@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Cocktail Filter Lookup API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup cocktail or ingredient by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecocktaildb.com/api/json/v1/{apiKey}/lookup.php",
+            "params": [
+              {
+                "name": "i",
+                "value": "",
+                "type": "query",
+                "description": "Cocktail ID."
+              },
+              {
+                "name": "iid",
+                "value": "",
+                "type": "query",
+                "description": "Ingredient ID."
+              }
+            ]
+          },
+          "docs": "Get full cocktail details by ID, or ingredient information by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

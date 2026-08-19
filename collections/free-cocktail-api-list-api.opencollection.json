@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Cocktail Filter List API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List filter values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecocktaildb.com/api/json/v1/{apiKey}/list.php",
+            "params": [
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "List categories."
+              },
+              {
+                "name": "g",
+                "value": "",
+                "type": "query",
+                "description": "List glasses."
+              },
+              {
+                "name": "i",
+                "value": "",
+                "type": "query",
+                "description": "List ingredients."
+              },
+              {
+                "name": "a",
+                "value": "",
+                "type": "query",
+                "description": "List alcoholic filters."
+              }
+            ]
+          },
+          "docs": "List available categories, glasses, ingredients, or alcoholic filters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Cocktail Filter API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Filter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Filter cocktails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecocktaildb.com/api/json/v1/{apiKey}/filter.php",
+            "params": [
+              {
+                "name": "i",
+                "value": "",
+                "type": "query",
+                "description": "Ingredient to filter by."
+              },
+              {
+                "name": "a",
+                "value": "",
+                "type": "query",
+                "description": "Alcoholic or Non_Alcoholic."
+              },
+              {
+                "name": "c",
+                "value": "",
+                "type": "query",
+                "description": "Category to filter by."
+              },
+              {
+                "name": "g",
+                "value": "",
+                "type": "query",
+                "description": "Glass type to filter by."
+              }
+            ]
+          },
+          "docs": "Filter cocktails by ingredient, alcoholic/non-alcoholic, category, or glass type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

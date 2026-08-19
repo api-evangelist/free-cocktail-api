@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Cocktail Filter Random API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Random",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a random cocktail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecocktaildb.com/api/json/v1/{apiKey}/random.php"
+          },
+          "docs": "Get a random cocktail"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

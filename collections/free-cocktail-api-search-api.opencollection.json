@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Free Cocktail Filter Search API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search cocktails or ingredients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.thecocktaildb.com/api/json/v1/{apiKey}/search.php",
+            "params": [
+              {
+                "name": "s",
+                "value": "",
+                "type": "query",
+                "description": "Cocktail name to search for."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "First letter to list cocktails by."
+              },
+              {
+                "name": "i",
+                "value": "",
+                "type": "query",
+                "description": "Ingredient name to search for."
+              }
+            ]
+          },
+          "docs": "Search cocktails by name, list cocktails by first letter, or search ingredients by name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

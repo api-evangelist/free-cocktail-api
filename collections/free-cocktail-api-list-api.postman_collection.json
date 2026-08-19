@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "958d067d-13fe-44bd-9987-36cc1f615fe1",
+      "name": "List",
+      "description": {
+        "content": "List available categories, glasses, ingredients, and alcohol filters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8405570-dc87-4d26-97d8-fd84d25bb431",
+          "name": "List filter values",
+          "request": {
+            "name": "List filter values",
+            "description": {
+              "content": "List available categories, glasses, ingredients, or alcoholic filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "c",
+                  "value": "<string>",
+                  "description": "List categories."
+                },
+                {
+                  "disabled": false,
+                  "key": "g",
+                  "value": "<string>",
+                  "description": "List glasses."
+                },
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "List ingredients."
+                },
+                {
+                  "disabled": false,
+                  "key": "a",
+                  "value": "<string>",
+                  "description": "List alcoholic filters."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                  "type": "any",
+                  "value": "{{apiKey}}",
+                  "key": "apiKey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f0f34a3-530d-47d4-a2d8-b80db3e9007c",
+              "name": "List of filter values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "c",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "g",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "a",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+                      "type": "any",
+                      "value": "{{apiKey}}",
+                      "key": "apiKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "API key. \"1\" is the free test key; premium keys unlock additional endpoints.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "1",
+      "key": "apiKey"
+    },
+    {
+      "type": "string",
+      "value": "https://www.thecocktaildb.com/api/json/v1/{{apiKey}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "88e4c571-60d3-4ea0-a24a-340a94def38d",
+    "name": "Free Cocktail Filter List API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TheCocktailDB Free API provides access to a vast database of cocktail recipes, ingredients, glassware, and images. Search by name, ingredient, category, glass, or alcohol content, look up details by ID, list available filters, or fetch a random cocktail.\n\nContact Support:\n Name: TheCocktailDB",
+      "type": "text/plain"
+    }
+  }
+}
