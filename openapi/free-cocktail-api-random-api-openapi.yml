@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Free Cocktail Filter Random API
+  title: Free Cocktail Random API
   description: TheCocktailDB Free API provides access to a vast database of cocktail recipes, ingredients, glassware, and images. Search by name, ingredient, category, glass, or alcohol content, look up details by ID, list available filters, or fetch a random cocktail.
   version: '1.0'
   contact:
@@ -32,6 +32,13 @@ paths:
                 $ref: '#/components/schemas/DrinkList'
 components:
   schemas:
+    DrinkList:
+      type: object
+      properties:
+        drinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Drink'
     Drink:
       type: object
       properties:
@@ -50,10 +57,3 @@ components:
         strDrinkThumb:
           type: string
           format: uri
-    DrinkList:
-      type: object
-      properties:
-        drinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Drink'

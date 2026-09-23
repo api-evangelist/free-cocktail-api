@@ -1,11 +1,7 @@
 {
   "provider": "free-cocktail-api",
   "sources": [
-    "free-cocktail-api-filter-api-openapi.yml",
-    "free-cocktail-api-list-api-openapi.yml",
-    "free-cocktail-api-lookup-api-openapi.yml",
-    "free-cocktail-api-random-api-openapi.yml",
-    "free-cocktail-api-search-api-openapi.yml"
+    "_original/free-cocktail-api-openapi.yml"
   ],
   "outputs": [
     "free-cocktail-api-filter-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "free-cocktail-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "free-cocktail-api-filter-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-cocktail-api-list-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-cocktail-api-lookup-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-cocktail-api-random-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "free-cocktail-api-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
