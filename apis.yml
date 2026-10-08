@@ -102,6 +102,12 @@ apis:
   - type: Documentation
     url: https://www.thecocktaildb.com/api.php
 common:
+  - type: Plans
+    url: plans/free-cocktail-api-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/free-cocktail-api-rate-limits.yml
+  - type: FinOps
+    url: finops/free-cocktail-api-finops.yml
   - type: AgenticAccess
     url: agentic-access/free-cocktail-api-agentic-access.yml
   - type: DomainSecurity
